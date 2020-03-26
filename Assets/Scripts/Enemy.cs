@@ -2,38 +2,32 @@
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Speed")]
     [SerializeField] private float _movementSpeed = 0f;
     [SerializeField] private float _rotationSpeed = 0f;
-    [SerializeField] private float _increaseScaleSize = 0f;
-    [SerializeField] private GameObject _target = null;
+
+    [Header("Speed")]
+    [SerializeField] private GameObject _targetToFollow = null;
+    [SerializeField] private float _increaseScaleTarget = 0f;
     private Vector3 _scaleSizeVector;
+    public Vector3 ScaleSizeVector => _scaleSizeVector;
+    private Vector3 directionToMove;
 
     private void Start()
     {
-        _scaleSizeVector = new Vector3(_increaseScaleSize, _increaseScaleSize);
-
+        _scaleSizeVector = new Vector3(_increaseScaleTarget, _increaseScaleTarget);
     }
 
     private void OnTriggerStay2D()
     {
-        Vector3 currentPosition = this.transform.position;
-        Vector3 targetPosition = _target.transform.position;
-        Vector3 directionToMove = targetPosition - currentPosition;
+        directionToMove = _targetToFollow.transform.position - this.transform.position;
         
-        //Debug.DrawRay(currentPosition, this.transform.up*5, Color.blue, 20);
-        //Debug.DrawRay(currentPosition, directionToMove, Color.red, 20);
+        Debug.DrawRay(this.transform.position, this.transform.up*2, Color.blue, 20);
+        Debug.DrawRay(this.transform.position, directionToMove, Color.red, 20);
         
         float angleBetweenEnemyAndTarget = Vector3.SignedAngle(this.transform.up, directionToMove, this.transform.forward);
-        this.transform.Rotate(0, 0 , (angleBetweenEnemyAndTarget * _rotationSpeed));
 
+        this.transform.Rotate(0, 0 , (angleBetweenEnemyAndTarget * _rotationSpeed));
         this.transform.Translate(this.transform.up * _movementSpeed * Time.deltaTime, Space.World);
     }
-
-    // private void OnTriggerEnter2D(Collider2D objectCollideWith)
-    // {
-    //     Debug.Log("Collision Enter");
-    //     Transform transform = objectCollideWith.GetComponent<Transform>();
-    //     transform.localScale += scaleSizeVector;
-    //     Destroy(gameObject);
-    // }
 }
