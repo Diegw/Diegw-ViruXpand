@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7390037804385195643}
   - component: {fileID: 7390037804385195640}
   - component: {fileID: 6133961320906630585}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.3}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 7390037804744204933}
   - component: {fileID: 7390037804744204932}
   - component: {fileID: 7390037804744204935}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d97db6e66ed4b3f4b9518998ec51d1d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,4 +175,4 @@ MonoBehaviour:
   _movementSpeed: 1
   _rotationSpeed: 0.025
   _targetToFollow: {fileID: 0}
-  _increaseScaleTarget: 0
+  _increaseScaleTarget: 0.2
